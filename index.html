@@ -42,7 +42,7 @@
         <div class="section"><h2>景點與美食</h2><span>Places</span></div>
         <div class="pill-row" id="placeFilters"></div>
         <article class="card"><div class="card-head"><div class="card-title">🔖 收藏清單</div><button class="view" onclick="openPlaceForm()">＋新增</button></div><div id="placeList"></div></article>
-        <article class="card"><div class="card-head"><div class="card-title">✅ 代買清單</div><button class="view" onclick="openTodoForm()">＋新增</button></div><div id="todoList"></div></article>
+        <article class="card"><div class="card-head"><div class="card-title">✅ 代辦清單</div><button class="view" onclick="openTodoForm()">＋新增</button></div><div id="todoList"></div></article>
       </section>
     </div>
 
@@ -60,15 +60,30 @@
   <script>
     const storageKey = "busan-travel-planner-v3";
     const weekdays = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
-    const categories = ["全部","景點","美食","購物","住宿",其他"];
+    const categories = ["全部","景點","美食","購物","住宿","其他"];
     const defaultRates = {"₩":0.0213,"NT$":1,"¥":0.214,"$":32.3,"€":35.1,"£":41.2,"HK$":4.13,"S$":24.1,"฿":0.89,"A$":21.2,"C$":23.6};
     const currencyList = ["₩","NT$","¥","$","€","£","HK$","S$","฿","A$","C$"];
 
     function id(){return "id" + Math.random().toString(16).slice(2) + Date.now()}
 
     const demo = {
-      title:"Busan 遊記", subtitle:"Buson．釜山之旅", currency:"₩", themeColor:"#f6efd9", rates:defaultRates, activeDate:"", placeFilter:"",
-      days:["2026-07-06","2026-07-07","2026-07-08","2026-07-09","2026-07-10","2026-07-11"],
+      title:"Busan 遊記", subtitle:"Buson．釜山之旅", currency:"₩", themeColor:"#f6efd9", rates:defaultRates, activeDate:"2026-05-18", placeFilter:"全部",
+      days:["2026-05-15","2026-05-16","2026-05-17","2026-05-18","2026-05-19","2026-05-20"],
+      schedules:[
+        {id:id(),date:"2026-05-18",time:"09:00",title:"海雲台散步",location:"Haeundae Beach",transport:"地鐵",note:"早上人較少，適合拍照"},
+        {id:id(),date:"2026-05-18",time:"11:00",title:"海東龍宮寺",location:"Haedong Yonggungsa Temple",transport:"公車",note:"預留 1.5 小時"},
+        {id:id(),date:"2026-05-18",time:"13:00",title:"韓式午餐",location:"海雲台市場",transport:"步行",note:"可找豬肉湯飯或海鮮煎餅"}
+      ],
+      places:[
+        {id:id(),name:"Haeundae Beach",category:"景點",city:"Busan",address:"Haeundae Beach, Busan, South Korea",note:"釜山代表海灘"},
+        {id:id(),name:"甘川文化村",category:"景點",city:"Busan",address:"Gamcheon Culture Village, Busan",note:"彩色房屋與壁畫"},
+        {id:id(),name:"海雲台市場",category:"美食",city:"Busan",address:"Haeundae Traditional Market, Busan",note:"小吃與海鮮"}
+      ],
+      routes:[{id:id(),date:"2026-05-18",from:"Haeundae Station",to:"Haedong Yonggungsa Temple",mode:"大眾運輸",departTime:"10:20",note:"開啟 Google Maps 看即時交通"}],
+      expenses:[
+        {id:id(),date:"2026-05-18",item:"午餐",category:"餐費",amount:23000,currency:"₩",payer:"我",note:"約 NT$490"},
+        {id:id(),date:"2026-05-18",item:"地鐵交通",category:"交通",amount:3200,currency:"₩",payer:"我",note:"T-money"}
+      ],
       todos:[
         {id:id(),text:"確認護照、機票與住宿資料",done:false},
         {id:id(),text:"購買韓國網卡或 eSIM",done:false},
